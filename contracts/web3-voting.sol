@@ -8,7 +8,7 @@ contract Voting {
         uint voteCount;
     }
 
-    mapping(address => bool) private voters;  // 改为 private，推荐通过 getter 访问
+    mapping(address => bool) private voters;  
     mapping(uint => Candidate) public candidates;
     uint public candidatesCount;
 
@@ -37,7 +37,7 @@ contract Voting {
         return candidates[_candidateId].voteCount;
     }
 
-    // ✅ 新增：安全返回是否投票，避免直接读取 mapping 报错
+
     function hasVoted(address _addr) public view returns (bool) {
         return voters[_addr];
     }
